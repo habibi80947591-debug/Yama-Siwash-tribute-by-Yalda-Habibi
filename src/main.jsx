@@ -14,38 +14,100 @@ import {
   Newspaper,
   Heart,
   Quote,
-  ExternalLink
+  ExternalLink,
+  Play,
+  Calendar
 } from 'lucide-react';
 import './styles.css';
 
-const INSTAGRAM = 'https://www.instagram.com/yamasiawash.official/';
-const POEM_POST = 'https://www.instagram.com/p/CGiPi0Mpzuu/';
+const INSTAGRAM =
+  'https://www.instagram.com/yamasiawash.official/';
+
+const PROGRAMS = [
+  {
+    title: 'Debate Programme 01',
+    subtitle: 'A conversation with Yama Siawash',
+    year: 'Television programme',
+    video: 'https://youtu.be/Ni2NFTiOe1k',
+    thumbnail:
+      'https://img.youtube.com/vi/Ni2NFTiOe1k/hqdefault.jpg'
+  },
+  {
+    title: 'Debate Programme 02',
+    subtitle: 'Questions, discussion and public affairs',
+    year: 'Television programme',
+    video: 'https://youtu.be/kGQ5viiz-xg',
+    thumbnail:
+      'https://img.youtube.com/vi/kGQ5viiz-xg/hqdefault.jpg'
+  },
+  {
+    title: 'Debate Programme 03',
+    subtitle: 'A look back at his television work',
+    year: 'Television programme',
+    video: 'https://youtu.be/5qjXjHDsui0',
+    thumbnail:
+      'https://img.youtube.com/vi/5qjXjHDsui0/hqdefault.jpg'
+  }
+];
+
+// Add six actual photographs to public/images using these filenames.
+const PHOTOS = [
+  '/images/yama-01.jpeg',
+  '/images/yama-02.jpeg',
+  '/images/yama-03.jpeg',
+  '/images/yama-04.jpeg',
+  '/images/yama-05.jpeg',
+  '/images/yama-06.jpeg'
+];
 
 const copy = {
   en: {
     nav: ['Home', 'About', 'Journey', 'Journalism', 'Legacy', 'Gallery'],
     eyebrow: 'A DIGITAL TRIBUTE',
     headline: 'A voice that\nlives on.',
-    intro: 'Remembering Yama Siawash — Afghan journalist, presenter and a voice devoted to asking difficult questions.',
+    intro:
+      'Remembering Yama Siawash — Afghan journalist, presenter and a voice devoted to asking difficult questions.',
     explore: 'Explore his story',
-    poem: 'View the poem on Instagram',
+    poem: 'His Relentless Efforts',
 
     aboutTag: 'THE PERSON BEHIND THE VOICE',
     aboutTitle: 'A life shaped by words, curiosity and courage.',
-    aboutText: 'Yama Siawash was an Afghan journalist, television presenter, writer and lyricist. Through his work in the media, he became known to audiences for his thoughtful presence and direct questions. This website is a small digital space to remember his work and the importance of independent voices.',
-    note: 'This tribute is intended as a respectful introduction. Dates and biographical details should be checked against reliable published records before formal use.',
+    aboutText:
+      'Yama Siawash was an Afghan journalist, television presenter, writer and lyricist. Through his work in the media, he became known to audiences for his thoughtful presence and direct questions. This website is a small digital space to remember his work and the importance of independent voices.',
+    note:
+      'These photographs are intended to document his public life and work. Please use photographs with appropriate permission and attribution.',
+    photosTitle: 'Moments remembered',
+    photosSubtitle: 'Photographs from his public life',
 
     journeyTag: 'A JOURNEY REMEMBERED',
     journeyTitle: 'A timeline of his public life',
     milestones: [
-      ['1984', 'Born in Afghanistan', 'Biographical sources report that Yama Siawash was born in 1984.'],
-      ['2010', 'Joined TOLOnews', 'He began working with TOLOnews and became familiar to viewers through television journalism.'],
-      ['2020', 'Remembered by the nation', 'Yama Siawash was killed in Kabul on 7 November 2020. His death renewed concern about the safety of journalists.']
+      [
+        '1984',
+        'Born in Afghanistan',
+        'Biographical sources report that Yama Siawash was born in Kohistan district, Kapisa province, in 1984.'
+      ],
+      [
+        '2010',
+        'Joined TOLOnews',
+        'He began working with TOLOnews and became known to viewers through television journalism.'
+      ],
+      [
+        '2015',
+        'A significant chapter',
+        'His work as a presenter at TOLOnews came to an end in 2015.'
+      ],
+      [
+        '2020',
+        'Remembered by the nation',
+        'Yama Siawash was killed in Kabul on 7 November 2020. His work and contribution to journalism continue to be remembered.'
+      ]
     ],
 
     mediaTag: 'THE WORK',
     mediaTitle: 'Journalism with a public purpose',
-    mediaText: 'As a presenter on the programme Farakhabar, Siawash spoke with guests and questioned public officials about issues affecting Afghanistan.',
+    mediaText:
+      'As a presenter on the programme Farakhabar, Siawash spoke with guests and questioned public officials about issues affecting Afghanistan.',
     cards: [
       ['Television', 'A familiar presenter and interviewer.'],
       ['Writing', 'A creative voice beyond the newsroom.'],
@@ -54,15 +116,23 @@ const copy = {
 
     legacyTag: 'BEYOND THE HEADLINES',
     legacyTitle: 'The importance of a free voice',
-    legacyText: 'Remembering a journalist also means remembering the value of truth, open discussion and the right to ask questions. May his story encourage thoughtful dialogue and respect for those who report the news.',
-    quote: 'A journalist’s questions can open a space for a society to think.',
+    legacyText:
+      'Remembering a journalist also means remembering the value of truth, open discussion and the right to ask questions. May his story encourage thoughtful dialogue and respect for those who report the news.',
+    quote:
+      'A journalist’s questions can open a space for a society to think.',
     quoteBy: 'A tribute written in his memory',
 
-    galleryTag: 'PORTRAIT & MEMORY',
-    galleryTitle: 'A photograph to remember',
-    galleryText: 'The portrait on this page was supplied for this tribute. The poem is linked to its original Instagram publication; its full text is not reproduced here.',
+    galleryTag: 'TELEVISION ARCHIVE',
+    galleryTitle: 'His work, conversations and debates',
+    galleryText:
+      'Explore selected television programmes and discussions connected with Yama Siawash. Select a photograph to watch its corresponding programme.',
+    watch: 'Watch programme',
+    programLabel: 'PROGRAMME',
+    galleryNote:
+      'The archive currently includes the three supplied programme links. Additional verified programme recordings can be added later.',
 
-    footer: 'A respectful digital tribute. Created to remember, learn and reflect.',
+    footer:
+      'A respectful digital tribute. Created to remember, learn and reflect.',
     top: 'Back to top'
   },
 
@@ -70,26 +140,49 @@ const copy = {
     nav: ['خانه', 'درباره', 'مسیر زندگی', 'روزنامه‌نگاری', 'میراث', 'نگارخانه'],
     eyebrow: 'یادبود دیجیتالی',
     headline: 'صدایی که\nماندگار است.',
-    intro: 'یادی از یما سیاووش؛ خبرنگار، گوینده و صدایی که با پرسش‌های جدی، گفت‌وگوی عمومی را زنده نگه می‌داشت.',
+    intro:
+      'یادی از یما سیاووش؛ خبرنگار، گوینده و صدایی که با پرسش‌های جدی، گفت‌وگوی عمومی را زنده نگه می‌داشت.',
     explore: 'آشنایی با زندگی او',
-    poem: 'دیدن شعر در انستاگرام',
+    poem: 'تلاش‌های خستگی‌ناپذیر او',
 
     aboutTag: 'چهره‌ای فراتر از صدا',
     aboutTitle: 'زندگی‌ای با واژه‌ها، کنجکاوی و شهامت.',
-    aboutText: 'یما سیاووش خبرنگار، گوینده تلویزیون، نویسنده و شاعر افغان بود. او از راه کار رسانه‌ای خود برای بینندگان شناخته شد و با حضور سنجیده و پرسش‌های مستقیم، در گفت‌وگوهای عمومی سهم گرفت. این وب‌سایت فضای کوچکی دیجیتالی برای یادآوری کارنامه او و اهمیت صداهای مستقل است.',
-    note: 'این یادبود برای معرفی محترمانه تهیه شده است. پیش از استفاده رسمی، تاریخ‌ها و جزئیات زندگی‌نامه باید با منابع معتبر چاپ‌شده بررسی شوند.',
+    aboutText:
+      'یما سیاووش خبرنگار، گوینده تلویزیون، نویسنده و شاعر افغان بود. او از راه کار رسانه‌ای خود برای بینندگان شناخته شد و با حضور سنجیده و پرسش‌های مستقیم، در گفت‌وگوهای عمومی سهم گرفت. این وب‌سایت فضای کوچکی دیجیتالی برای یادآوری کارنامه او و اهمیت صداهای مستقل است.',
+    note:
+      'این تصاویر برای نمایش زندگی عمومی و کار رسانه‌ای او در نظر گرفته شده‌اند. لطفاً از تصاویر با رعایت اجازه و ذکر منبع استفاده کنید.',
+    photosTitle: 'لحظه‌هایی برای به‌یادسپردن',
+    photosSubtitle: 'تصاویر از زندگی و فعالیت‌های او',
 
     journeyTag: 'مروری بر زندگی',
     journeyTitle: 'چند ایستگاه از مسیر زندگی او',
     milestones: [
-      ['۱۹۸۴', 'زادروز', 'در منابع زندگی‌نامه‌ای، سال تولد یما سیاووش ۱۹۸۴ ذکر شده است.'],
-      ['۲۰۱۰', 'پیوستن به طلوع‌نیوز', 'او کار رسانه‌ای خود را با طلوع‌نیوز ادامه داد و از طریق برنامه‌های تلویزیونی برای بینندگان شناخته شد.'],
-      ['۲۰۲۰', 'یاد او در حافظه مردم', 'یما سیاووش در ۷ نومبر ۲۰۲۰ در کابل جان باخت. مرگ او نگرانی‌ها درباره امنیت خبرنگاران را دوباره برجسته ساخت.']
+      [
+        '۱۹۸۴',
+        'زادروز',
+        'در منابع زندگی‌نامه‌ای، سال تولد یما سیاووش ۱۹۸۴ و محل تولد او ولسوالی کوهستان ولایت کاپیسا ذکر شده است.'
+      ],
+      [
+        '۲۰۱۰',
+        'پیوستن به طلوع‌نیوز',
+        'او کار رسانه‌ای خود را با طلوع‌نیوز ادامه داد و از طریق برنامه‌های تلویزیونی برای بینندگان شناخته شد.'
+      ],
+      [
+        '۲۰۱۵',
+        'پایان یک فصل کاری',
+        'دوره کاری او به‌عنوان گرداننده برنامه در طلوع‌نیوز در سال ۲۰۱۵ پایان یافت.'
+      ],
+      [
+        '۲۰۲۰',
+        'یاد او در حافظه مردم',
+        'یما سیاووش در ۷ نومبر ۲۰۲۰ در کابل جان باخت. کار و سهم او در روزنامه‌نگاری همچنان به یاد آورده می‌شود.'
+      ]
     ],
 
     mediaTag: 'کار رسانه‌ای',
     mediaTitle: 'روزنامه‌نگاری در خدمت جامعه',
-    mediaText: 'سیاووش به‌عنوان گرداننده برنامه «فراخبر» با مهمانان گفت‌وگو می‌کرد و از مسئولان درباره موضوعات مهم افغانستان پرسش می‌نمود. کار او بخشی از تاریخ معاصر رسانه‌های افغانستان به شمار می‌رود.',
+    mediaText:
+      'سیاووش به‌عنوان گرداننده برنامه «فراخبر» با مهمانان گفت‌وگو می‌کرد و از مسئولان درباره موضوعات مهم افغانستان پرسش می‌نمود.',
     cards: [
       ['تلویزیون', 'چهره‌ای آشنا در برنامه‌های گفت‌وگومحور.'],
       ['نویسندگی', 'صدایی خلاق فراتر از اتاق خبر.'],
@@ -98,13 +191,20 @@ const copy = {
 
     legacyTag: 'فراتر از خبرها',
     legacyTitle: 'ارزش صدای آزاد',
-    legacyText: 'یادکردن از یک خبرنگار، یادکردن از ارزش حقیقت، گفت‌وگوی آزاد و حق پرسش‌گری نیز است. باشد که داستان زندگی او ما را به گفت‌وگوی سنجیده و احترام به کسانی که خبر را گزارش می‌کنند، تشویق کند.',
-    quote: 'پرسش‌های یک خبرنگار می‌تواند زمینه‌ای برای اندیشیدن جامعه فراهم کند.',
+    legacyText:
+      'یادکردن از یک خبرنگار، یادکردن از ارزش حقیقت، گفت‌وگوی آزاد و حق پرسش‌گری نیز است. باشد که داستان زندگی او ما را به گفت‌وگوی سنجیده و احترام به کسانی که خبر را گزارش می‌کنند، تشویق کند.',
+    quote:
+      'پرسش‌های یک خبرنگار می‌تواند زمینه‌ای برای اندیشیدن جامعه فراهم کند.',
     quoteBy: 'نوشته‌ای یادبود به پاس خاطره او',
 
-    galleryTag: 'تصویر و خاطره',
-    galleryTitle: 'تصویری برای به‌یادسپردن',
-    galleryText: 'تصویر این صفحه برای این یادبود از سوی کاربر فراهم شده است. شعر به نشر اصلی آن در انستاگرام پیوند داده شده و متن کامل آن در این‌جا بازنشر نشده است.',
+    galleryTag: 'آرشیف تلویزیونی',
+    galleryTitle: 'کارها، گفت‌وگوها و مناظره‌های او',
+    galleryText:
+      'برنامه‌ها و گفت‌وگوهای تلویزیونی مربوط به یما سیاووش را ببینید. برای تماشای هر برنامه، روی تصویر آن کلیک کنید.',
+    watch: 'تماشای برنامه',
+    programLabel: 'برنامه',
+    galleryNote:
+      'در حال حاضر این آرشیف شامل سه پیوند برنامه‌ای است که فراهم کرده‌اید. برنامه‌های تأییدشده دیگر را نیز می‌توان بعداً اضافه کرد.',
 
     footer: 'یادبودی با احترام؛ برای به‌یادآوردن، آموختن و اندیشیدن.',
     top: 'بازگشت به بالا'
@@ -130,7 +230,8 @@ function App() {
 
   const go = (id) => {
     document.getElementById(id)?.scrollIntoView({
-      behavior: 'smooth'
+      behavior: 'smooth',
+      block: 'start'
     });
     setMenu(false);
   };
@@ -142,7 +243,16 @@ function App() {
     >
       <div className="ambient-bg" aria-hidden="true" />
 
-      <header className="header">
+      {/* Sticky navigation stays accessible while scrolling */}
+      <header
+        className="header"
+        style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 1000,
+          width: '100%'
+        }}
+      >
         <a
           className="brand"
           href="#home"
@@ -201,6 +311,7 @@ function App() {
       )}
 
       <main>
+        {/* HERO */}
         <section className="hero section" id="home">
           <div className="hero-copy">
             <motion.div
@@ -231,15 +342,14 @@ function App() {
                   <ArrowDown size={16} />
                 </button>
 
-                <a
+                <button
                   className="text-link"
-                  href={POEM_POST}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={() => go('gallery')}
+                  type="button"
                 >
                   {t.poem}
                   <ArrowUpRight size={16} />
-                </a>
+                </button>
               </div>
             </motion.div>
           </div>
@@ -265,6 +375,7 @@ function App() {
           </div>
         </section>
 
+        {/* ABOUT + SIX PHOTOS */}
         <section className="content-section section" id="about">
           <div className="section-heading">
             <p className="eyebrow">{t.aboutTag}</p>
@@ -281,8 +392,47 @@ function App() {
               <p className="small-note">{t.note}</p>
             </div>
           </div>
+
+          <div className="photo-heading">
+            <h3>{t.photosTitle}</h3>
+            <p>{t.photosSubtitle}</p>
+          </div>
+
+          <div className="about-photo-grid">
+            {PHOTOS.map((src, i) => (
+              <motion.figure
+                className="about-photo-card"
+                key={src}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
+              >
+                <img
+                  src={src}
+                  alt={`Yama Siawash photograph ${i + 1}`}
+                  loading="lazy"
+                />
+                <figcaption>
+                  Yama Siawash <span>0{i + 1}</span>
+                </figcaption>
+              </motion.figure>
+            ))}
+          </div>
+
+          <a
+            className="text-link instagram-about-link"
+            href={INSTAGRAM}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Camera size={17} />
+            View his Instagram photographs
+            <ExternalLink size={15} />
+          </a>
         </section>
 
+        {/* JOURNEY */}
         <section
           className="content-section timeline-section section"
           id="journey"
@@ -314,10 +464,8 @@ function App() {
           </div>
         </section>
 
-        <section
-          className="content-section section"
-          id="journalism"
-        >
+        {/* JOURNALISM */}
+        <section className="content-section section" id="journalism">
           <div className="section-heading">
             <p className="eyebrow">{t.mediaTag}</p>
             <h2>{t.mediaTitle}</h2>
@@ -349,6 +497,7 @@ function App() {
           </div>
         </section>
 
+        {/* LEGACY */}
         <section className="legacy-section section" id="legacy">
           <div className="legacy-inner">
             <p className="eyebrow">{t.legacyTag}</p>
@@ -363,6 +512,7 @@ function App() {
           </div>
         </section>
 
+        {/* GALLERY / VIDEO ARCHIVE */}
         <section
           className="content-section gallery-section section"
           id="gallery"
@@ -370,33 +520,63 @@ function App() {
           <div className="section-heading">
             <p className="eyebrow">{t.galleryTag}</p>
             <h2>{t.galleryTitle}</h2>
+            <p className="large-copy">{t.galleryText}</p>
           </div>
 
-          <div className="gallery-grid">
-            <img
-  src="/yama-poem.jpg"
-  alt="Yama Siawash"
-  className="gallery-image"
-/>
-
-            <div className="gallery-info">
-              <Heart />
-              <p>{t.galleryText}</p>
-
-              <a
-                className="text-link"
-                href={POEM_POST}
+          <div className="program-grid">
+            {PROGRAMS.map((program, i) => (
+              <motion.a
+                className="program-card"
+                href={program.video}
                 target="_blank"
                 rel="noopener noreferrer"
+                key={program.video}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                {t.poem}
-                <ExternalLink size={15} />
-              </a>
-            </div>
+                <div className="program-image-wrap">
+                  <img
+                    src={program.thumbnail}
+                    alt={program.title}
+                    loading="lazy"
+                  />
+
+                  <span className="program-play">
+                    <Play size={25} fill="currentColor" />
+                  </span>
+
+                  <span className="program-number">
+                    0{i + 1}
+                  </span>
+                </div>
+
+                <div className="program-info">
+                  <p className="program-label">
+                    <Calendar size={14} />
+                    {t.programLabel} 0{i + 1}
+                  </p>
+
+                  <h3>{program.title}</h3>
+                  <p>{program.subtitle}</p>
+
+                  <span className="program-watch">
+                    {t.watch}
+                    <ArrowUpRight size={16} />
+                  </span>
+                </div>
+              </motion.a>
+            ))}
           </div>
+
+          <p className="small-note gallery-note">
+            {t.galleryNote}
+          </p>
         </section>
       </main>
 
+      {/* FOOTER */}
       <footer className="footer">
         <a
           className="brand"
@@ -417,7 +597,7 @@ function App() {
         </button>
       </footer>
 
-      {/* Persistent Instagram profile link */}
+      {/* PERSISTENT INSTAGRAM LINK */}
       <a
         className="instagram-float"
         href={INSTAGRAM}
