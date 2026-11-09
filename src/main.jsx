@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { motion } from 'framer-motion';
@@ -27,30 +28,23 @@ const PROGRAMS = [
   {
     title: 'Debate Programme 01',
     subtitle: 'A conversation with Yama Siawash',
-    year: 'Television programme',
     video: 'https://youtu.be/Ni2NFTiOe1k',
-    thumbnail:
-      'https://img.youtube.com/vi/Ni2NFTiOe1k/hqdefault.jpg'
+    thumbnail: 'https://img.youtube.com/vi/Ni2NFTiOe1k/hqdefault.jpg'
   },
   {
     title: 'Debate Programme 02',
     subtitle: 'Questions, discussion and public affairs',
-    year: 'Television programme',
     video: 'https://youtu.be/kGQ5viiz-xg',
-    thumbnail:
-      'https://img.youtube.com/vi/kGQ5viiz-xg/hqdefault.jpg'
+    thumbnail: 'https://img.youtube.com/vi/kGQ5viiz-xg/hqdefault.jpg'
   },
   {
     title: 'Debate Programme 03',
     subtitle: 'A look back at his television work',
-    year: 'Television programme',
     video: 'https://youtu.be/5qjXjHDsui0',
-    thumbnail:
-      'https://img.youtube.com/vi/5qjXjHDsui0/hqdefault.jpg'
+    thumbnail: 'https://img.youtube.com/vi/5qjXjHDsui0/hqdefault.jpg'
   }
 ];
 
-// Add six actual photographs to public/images using these filenames.
 const PHOTOS = [
   '/images/yama-01.jpeg',
   '/images/yama-02.jpeg',
@@ -58,6 +52,62 @@ const PHOTOS = [
   '/images/yama-04.jpeg',
   '/images/yama-05.jpeg',
   '/images/yama-06.jpeg'
+];
+
+// Seven additional videos for the LEGACY section.
+// YouTube thumbnails are loaded from YouTube.
+// Instagram cards use the local Yama photographs.
+
+const LEGACY_MEDIA = [
+  {
+    title: 'Television Memory 01',
+    subtitle: 'A moment from his public life',
+    type: 'YouTube Short',
+    video: 'https://youtube.com/shorts/NsFKJwFWrnI?si=9dW3um_XhAWTn3lQ',
+    thumbnail: 'https://img.youtube.com/vi/NsFKJwFWrnI/hqdefault.jpg'
+  },
+  {
+    title: 'Television Memory 02',
+    subtitle: 'Remembering his work and voice',
+    type: 'YouTube Short',
+    video: 'https://youtube.com/shorts/IfU89VX3p6Y?si=WN6UnnUsbJ0yUp6e',
+    thumbnail: 'https://img.youtube.com/vi/IfU89VX3p6Y/hqdefault.jpg'
+  },
+  {
+    title: 'Television Memory 03',
+    subtitle: 'A tribute to his contribution',
+    type: 'YouTube Short',
+    video: 'https://youtube.com/shorts/ct53rJgMKnI?si=-khA3T-kXn5SP_pm',
+    thumbnail: 'https://img.youtube.com/vi/ct53rJgMKnI/hqdefault.jpg'
+  },
+  {
+    title: 'Instagram Memory 01',
+    subtitle: 'A moment remembered',
+    type: 'Instagram Reel',
+    video: 'https://www.instagram.com/reel/DQyW9e5DBR7/?vrfl=aTl6b21oaGpxczV0',
+    thumbnail: PHOTOS[0]
+  },
+  {
+    title: 'Television Memory 04',
+    subtitle: 'His voice remains remembered',
+    type: 'YouTube Short',
+    video: 'https://youtube.com/shorts/0YxXneUlhuA?si=pjn7QaqrRMHBuAxJ',
+    thumbnail: 'https://img.youtube.com/vi/0YxXneUlhuA/hqdefault.jpg'
+  },
+  {
+    title: 'Instagram Memory 02',
+    subtitle: 'A tribute through photographs',
+    type: 'Instagram Reel',
+    video: 'https://www.instagram.com/reel/DfbroHpMl6G/?rpxt=OWR0aWR1b3Vzam5l',
+    thumbnail: PHOTOS[1]
+  },
+  {
+    title: 'Television Memory 05',
+    subtitle: 'Remembering a remarkable journalist',
+    type: 'YouTube Short',
+    video: 'https://youtube.com/shorts/QkXy5RarqVk?si=-6j6rLq3qgxBw_dS',
+    thumbnail: 'https://img.youtube.com/vi/QkXy5RarqVk/hqdefault.jpg'
+  }
 ];
 
 const copy = {
@@ -75,7 +125,7 @@ const copy = {
     aboutText:
       'Yama Siawash was an Afghan journalist, television presenter, writer and lyricist. Through his work in the media, he became known to audiences for his thoughtful presence and direct questions. This website is a small digital space to remember his work and the importance of independent voices.',
     note:
-      'These photographs are intended to document his public life and work. Please use photographs with appropriate permission and attribution.',
+      'These photographs document his public life and work. Photographs should be used with appropriate permission and attribution.',
     photosTitle: 'Moments remembered',
     photosSubtitle: 'Photographs from his public life',
 
@@ -122,14 +172,20 @@ const copy = {
       'A journalist’s questions can open a space for a society to think.',
     quoteBy: 'A tribute written in his memory',
 
+    legacyMediaTitle: 'His voice, his work, his legacy',
+    legacyMediaText:
+      'Explore these selected videos and memories celebrating the work and contribution of Yama Siawash.',
+    legacyWatch: 'Watch this memory',
+    legacySource: 'OPEN ORIGINAL VIDEO',
+
     galleryTag: 'TELEVISION ARCHIVE',
     galleryTitle: 'His work, conversations and debates',
     galleryText:
-      'Explore selected television programmes and discussions connected with Yama Siawash. Select a photograph to watch its corresponding programme.',
+      'Explore selected television programmes and discussions connected with Yama Siawash.',
     watch: 'Watch programme',
     programLabel: 'PROGRAMME',
     galleryNote:
-      'The archive currently includes the three supplied programme links. Additional verified programme recordings can be added later.',
+      'The archive includes the three supplied programme links. Additional verified recordings can be added later.',
 
     footer:
       'A respectful digital tribute. Created to remember, learn and reflect.',
@@ -197,14 +253,20 @@ const copy = {
       'پرسش‌های یک خبرنگار می‌تواند زمینه‌ای برای اندیشیدن جامعه فراهم کند.',
     quoteBy: 'نوشته‌ای یادبود به پاس خاطره او',
 
+    legacyMediaTitle: 'صدای او، کارنامه او، میراث او',
+    legacyMediaText:
+      'این ویدیوها و خاطره‌ها را برای یادآوری کارنامه و سهم یما سیاووش تماشا کنید.',
+    legacyWatch: 'تماشای این خاطره',
+    legacySource: 'دیدن ویدیوی اصلی',
+
     galleryTag: 'آرشیف تلویزیونی',
     galleryTitle: 'کارها، گفت‌وگوها و مناظره‌های او',
     galleryText:
-      'برنامه‌ها و گفت‌وگوهای تلویزیونی مربوط به یما سیاووش را ببینید. برای تماشای هر برنامه، روی تصویر آن کلیک کنید.',
+      'برنامه‌ها و گفت‌وگوهای تلویزیونی مربوط به یما سیاووش را ببینید.',
     watch: 'تماشای برنامه',
     programLabel: 'برنامه',
     galleryNote:
-      'در حال حاضر این آرشیف شامل سه پیوند برنامه‌ای است که فراهم کرده‌اید. برنامه‌های تأییدشده دیگر را نیز می‌توان بعداً اضافه کرد.',
+      'در حال حاضر این آرشیف شامل سه پیوند برنامه‌ای است که فراهم کرده‌اید.',
 
     footer: 'یادبودی با احترام؛ برای به‌یادآوردن، آموختن و اندیشیدن.',
     top: 'بازگشت به بالا'
@@ -228,11 +290,21 @@ function App() {
     'gallery'
   ];
 
+  // Scroll with space for the permanently fixed navbar.
   const go = (id) => {
-    document.getElementById(id)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+    const element = document.getElementById(id);
+
+    if (element) {
+      const headerOffset = 95;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: elementPosition - headerOffset,
+        behavior: 'smooth'
+      });
+    }
+
     setMenu(false);
   };
 
@@ -243,14 +315,16 @@ function App() {
     >
       <div className="ambient-bg" aria-hidden="true" />
 
-      {/* Sticky navigation stays accessible while scrolling */}
+      {/* FIXED NAVBAR: ALWAYS VISIBLE ON EVERY SECTION */}
       <header
         className="header"
         style={{
-          position: 'sticky',
+          position: 'fixed',
           top: 0,
-          zIndex: 1000,
-          width: '100%'
+          left: 0,
+          right: 0,
+          width: '100%',
+          zIndex: 9999
         }}
       >
         <a
@@ -300,8 +374,18 @@ function App() {
         </div>
       </header>
 
+      {/* MOBILE NAVIGATION */}
       {menu && (
-        <nav className="mobile-nav">
+        <nav
+          className="mobile-nav"
+          style={{
+            position: 'fixed',
+            top: '75px',
+            left: 0,
+            right: 0,
+            zIndex: 9998
+          }}
+        >
           {t.nav.map((n, i) => (
             <button key={n} onClick={() => go(ids[i])}>
               {n}
@@ -310,7 +394,9 @@ function App() {
         </nav>
       )}
 
-      <main>
+      {/* MAIN CONTENT: SPACE FOR FIXED NAVBAR */}
+      <main style={{ paddingTop: '85px' }}>
+
         {/* HERO */}
         <section className="hero section" id="home">
           <div className="hero-copy">
@@ -344,7 +430,7 @@ function App() {
 
                 <button
                   className="text-link"
-                  onClick={() => go('gallery')}
+                  onClick={() => go('legacy')}
                   type="button"
                 >
                   {t.poem}
@@ -413,6 +499,7 @@ function App() {
                   alt={`Yama Siawash photograph ${i + 1}`}
                   loading="lazy"
                 />
+
                 <figcaption>
                   Yama Siawash <span>0{i + 1}</span>
                 </figcaption>
@@ -497,11 +584,13 @@ function App() {
           </div>
         </section>
 
-        {/* LEGACY */}
+        {/* LEGACY + SEVEN NEW VIDEO MEMORIES */}
         <section className="legacy-section section" id="legacy">
           <div className="legacy-inner">
             <p className="eyebrow">{t.legacyTag}</p>
+
             <h2>{t.legacyTitle}</h2>
+
             <p className="legacy-copy">{t.legacyText}</p>
 
             <div className="quote-card">
@@ -509,10 +598,75 @@ function App() {
               <blockquote>{t.quote}</blockquote>
               <span>{t.quoteBy}</span>
             </div>
+
+            {/* NEW LEGACY MEDIA COLLECTION */}
+            <div className="legacy-media-heading">
+              <p className="eyebrow">{t.legacyMediaTitle}</p>
+              <p>{t.legacyMediaText}</p>
+            </div>
+
+            <div className="legacy-media-grid">
+              {LEGACY_MEDIA.map((item, i) => (
+                <motion.a
+                  className="legacy-media-card"
+                  href={item.video}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={item.video}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{
+                    duration: 0.45,
+                    delay: (i % 3) * 0.08
+                  }}
+                >
+                  <div className="legacy-media-image">
+                    <img
+                      src={item.thumbnail}
+                      alt={`Yama Siawash - ${item.title}`}
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src =
+                          '/images/yama-siawash-portrait.jpg';
+                      }}
+                    />
+
+                    <span className="legacy-play">
+                      <Play size={23} fill="currentColor" />
+                    </span>
+
+                    <span className="legacy-index">
+                      0{i + 1}
+                    </span>
+                </div>
+
+                  <div className="legacy-media-info">
+                    <span className="legacy-media-type">
+                      <Calendar size={13} />
+                      {item.type}
+                    </span>
+
+                    <h3>{item.title}</h3>
+                    <p>{item.subtitle}</p>
+
+                    <span className="legacy-watch">
+                      {t.legacyWatch}
+                      <ArrowUpRight size={15} />
+                    </span>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+
+            <p className="legacy-source-note">
+              {t.legacySource}
+            </p>
           </div>
         </section>
 
-        {/* GALLERY / VIDEO ARCHIVE */}
+        {/* GALLERY / THREE DEBATE PROGRAMMES */}
         <section
           className="content-section gallery-section section"
           id="gallery"
@@ -540,7 +694,7 @@ function App() {
                   <img
                     src={program.thumbnail}
                     alt={program.title}
-                    loading="lazy"
+loading="lazy"
                   />
 
                   <span className="program-play">
@@ -597,11 +751,11 @@ function App() {
         </button>
       </footer>
 
-      {/* PERSISTENT INSTAGRAM LINK */}
+      {/* INSTAGRAM BUTTON ALWAYS AVAILABLE */}
       <a
         className="instagram-float"
         href={INSTAGRAM}
-        target="_blank"
+target="_blank"
         rel="noopener noreferrer"
         aria-label="Visit Yama Siawash Instagram"
       >
@@ -614,3 +768,4 @@ function App() {
 }
 
 createRoot(document.getElementById('root')).render(<App />);
+
